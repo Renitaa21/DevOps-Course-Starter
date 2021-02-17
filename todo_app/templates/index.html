@@ -19,14 +19,14 @@
     </div>
   </div>
 
-  <form action="" method="get" class="form-example">
+  <form action="http://127.0.0.1:5000/add" method="get" class="form-example">
     <div class="form-example">
       <label for="title">Enter the title: </label>
       <input type="text" name="title" id="title" required>
     </div>
     
     <div class="form-example">
-      <input type="submit" value="Add Item">
+      <button type="submit" formmethod="post">Add Item</button>
     </div>
   </form>
 {% endblock %}
