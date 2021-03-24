@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from werkzeug.utils import redirect
 from todo_app.data.session_items import *
 from todo_app.flask_config import Config
@@ -15,44 +15,72 @@ app.config.from_object(Config)
 
 @app.route('/')
 def index():
-    todoitemsresponse = requests.get("https://api.trello.com/1/lists/6047ecb966a18d23e8029cd2/cards?&key="+os.environ.get('API_KEY')+"&token="+os.environ.get('TOKEN_KEY')).json()
+    query_params = {
+        "key": os.environ.get('API_KEY'),
+        "token": os.environ.get('TOKEN_KEY')
+    }  
+    url = f"https://api.trello.com/1/lists/{os.environ.get('TODO_LISTID')}/cards"
+    todoitemsresponse = requests.get(url, params = query_params).json()
     todoitems = []
-    for obj in todoitemsresponse:
-        cardname = obj['name']
-        todoitems.append(cardname)
+    for card in todoitemsresponse:
+        myitem = Item(card['id'],card['idList'],card['name'])
+        todoitems.append(myitem)
     return render_template('index.html', todoitems = todoitems)
 
 @app.route('/add', methods=['POST'])
 def add():
-    
-    URL = "https://api.trello.com/1/cards?&key="+os.environ.get('API_KEY')+"&token="+os.environ.get('TOKEN_KEY')+"&idList=6047ecb966a18d23e8029cd2&name=" + request.form.get('title')
-    requests.post(URL)
+    query_params = {
+        "key": os.environ.get('API_KEY'),
+        "token": os.environ.get('TOKEN_KEY'),
+        "idList": os.environ.get('TODO_LISTID'),
+        "name": request.form.get('title')
+    }
+    url = "https://api.trello.com/1/cards"
+    requests.post(url, params=query_params)
     return redirect(url_for("index"))
     
 @app.route('/complete_item', methods=['POST'])
 def complete_item():
-   
-    #newURL = "https://api.trello.com/1/cards/"+id+"?&key="+os.environ.get('API_KEY')+"&token="+os.environ.get('TOKEN_KEY')+"&idList=6047ecb966a18d23e8029cd4"
-        
-    URL = "https://api.trello.com/1/cards/"+request.form.get('id')+"?&key="+os.environ.get('API_KEY')+"&token="+os.environ.get('TOKEN_KEY')+"&idList=6047ecb966a18d23e8029cd4"
-      
-    requests.put(URL)
+          
+    url = f"https://api.trello.com/1/cards/{request.form.get('id')}"
+    query_params = {
+        "key": os.environ.get('API_KEY'),
+        "token": os.environ.get('TOKEN_KEY'),
+        "idList": os.environ.get('DONE_LISTID')
+    }  
+    requests.put(url, params=query_params)
         
     return redirect(url_for("index"))
 
 
-@app.route('/completeitem/<name>', methods=['GET','POST'])
-def completeitem(name):
-    itemidURL = "https://api.trello.com/1/search?modelTypes=cards&query="+str(name)+"?&key="+os.environ.get('API_KEY')+"&token="+os.environ.get('TOKEN_KEY')
-    
-    itemidresp = requests.put(itemidURL)
-    itemidjson = itemidresp.json()
-    id = itemidjson['cards'][0]['id']
+@app.route('/completeitem/<id>', methods=['GET','POST'])
+def completeitem(id):
+    url = f"https://api.trello.com/1/cards/{id}"
+    query_params = {
+        "key": os.environ.get('API_KEY'),
+        "token": os.environ.get('TOKEN_KEY'),
+        "idList": os.environ.get('DONE_LISTID')
+    }
 
-    URL = "https://api.trello.com/1/cards/"+str(id)+"?&key="+os.environ.get('API_KEY')+"&token="+os.environ.get('TOKEN_KEY')+"&idList=6047ecb966a18d23e8029cd4"
-    requests.put(URL)
+    requests.put(url, params=query_params)
     
     return redirect(url_for("index"))
   
 if __name__ == '__main__':
     app.run()
+
+class Item:
+    def __init__(self, id, listid, title) :
+        self.id = id
+        self.listid = listid
+        self.title = title
+        if self.listid == os.environ.get('TODO_LISTID'):
+            self.status = "ToDo" 
+        elif self.listid == os.environ.get('DOING_LISTID'):
+            self.status = "Doing" 
+        elif self.listid == os.environ.get('DONE_LISTID'):
+            self.status = "Done" 
+        else: 
+            self.status = "NotValid" 
+        
+

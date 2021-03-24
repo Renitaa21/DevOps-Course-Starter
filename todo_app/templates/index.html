@@ -13,7 +13,7 @@
       <ul class="list-group mb-4">
         <!-- List the todo items here -->
         {% for todoitem in todoitems %}
-        <li>{{ todoitem}} <a href= "{{url_for('completeitem',name=todoitem)}}">Complete</a> </li>
+        <li>{{ todoitem.title}} - {{todoitem.id}} - {{todoitem.listid}} - {{todoitem.status}}  <a href= "{{url_for('completeitem',id=todoitem.id)}}">Complete</a> </li>
         {% endfor %}
       </ul>
     </div>

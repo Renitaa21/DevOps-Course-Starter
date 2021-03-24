@@ -59,3 +59,5 @@ API, you need to first create an account https://trello.com/signup , then
 generate an API key and token by following
 the instructions here. https://trello.com/app-key 
 Add these to the .env file and ensure this file is in the gitignore file so this does not get committed. 
+
+You also need to get the list ids for the todo, doing and done lists by clicking on a card in each of these lists in trello , then click on Share and then Export JSON. Within the JSON response you can find the idList example - "idList":"6047ecb966a18d23e8029cd2". Add these ids into the .env file too. 
