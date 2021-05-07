@@ -8,6 +8,7 @@ import os
 import pdb
 import json
 
+
 app = Flask(__name__)
 app.config.from_object(Config)
 
@@ -17,7 +18,7 @@ class ViewModel():
     @property
     def items(self):
         return self._items
-        
+
     def completed_items(self):
         completed_items = []
         for item in self.items:
@@ -83,18 +84,33 @@ def completeitem(id):
 if __name__ == '__main__':
     app.run()
 
+_DEFAULT_ITEMS = [
+        {'id':1,'status': 'Not Started', 'title': 'List saved todo items'},
+        {'id':2,'status': 'Not Started', 'title': 'List saved doing items'},
+        {'id':3,'status': 'Completed', 'title': 'List saved completed items'}
+    ]
+
 class Item:
-    def __init__(self, id, listid, title) :
-        self.id = id
-        self.listid = listid
-        self.title = title
-        if self.listid == os.environ.get('TODO_LISTID'):
-            self.status = "ToDo" 
-        elif self.listid == os.environ.get('DOING_LISTID'):
-            self.status = "Doing" 
-        elif self.listid == os.environ.get('DONE_LISTID'):
-            self.status = "Done" 
-        else: 
-            self.status = "NotValid" 
+    def __init__(self, id, title, status) :
+        self.id = 'id'
+        self.title = 'title'
+        self.status = 'status'
+
+    def __init__(self, item) :
+        self.id = item['id']
+        self.title = item['title']
+        self.status = item['status']
+
+def get_items():
+        return [Item(item) for item in session.get('items', _DEFAULT_ITEMS) ]
+        
+        #if self.listid == os.environ.get('TODO_LISTID'):
+         #   self.status = "ToDo" 
+        #elif self.listid == os.environ.get('DOING_LISTID'):
+         #   self.status = "Doing" 
+        #elif self.listid == os.environ.get('DONE_LISTID'):
+         #   self.status = "Done" 
+        #else: 
+         #   self.status = "NotValid" 
         
 
