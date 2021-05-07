@@ -12,8 +12,8 @@
       <h2>Items</h2>
       <ul class="list-group mb-4">
         <!-- List the todo items here -->
-        {% for todoitem in todoitems %}
-        <li>{{ todoitem.title}} - {{todoitem.id}} - {{todoitem.listid}} - {{todoitem.status}}  <a href= "{{url_for('completeitem',id=todoitem.id)}}">Complete</a> </li>
+        {% for item in view_model.completed_items() %}
+        #<li>{{ item.title}} - {{item.id}} - {{item.listid}} - {{item.status}}  <a href= "{{url_for('completeitem',id=item.id)}}">Complete</a> </li>
         {% endfor %}
       </ul>
     </div>

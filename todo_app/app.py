@@ -11,7 +11,19 @@ import json
 app = Flask(__name__)
 app.config.from_object(Config)
 
-
+class ViewModel():
+    def __init__(self, items):
+        self._items = items
+    @property
+    def items(self):
+        return self._items
+        
+    def completed_items(self):
+        completed_items = []
+        for item in self.items:
+            if item.status == "Completed":
+                completed_items.append(item)
+        return completed_items
 
 @app.route('/')
 def index():
@@ -20,12 +32,14 @@ def index():
         "token": os.environ.get('TOKEN_KEY')
     }  
     url = f"https://api.trello.com/1/lists/{os.environ.get('TODO_LISTID')}/cards"
-    todoitemsresponse = requests.get(url, params = query_params).json()
-    todoitems = []
-    for card in todoitemsresponse:
+    itemsresponse = requests.get(url, params = query_params).json()
+    items = []
+    for card in itemsresponse:
         myitem = Item(card['id'],card['idList'],card['name'])
-        todoitems.append(myitem)
-    return render_template('index.html', todoitems = todoitems)
+        items.append(myitem)
+    view_model = ViewModel(items)
+    return render_template('index.html',view_model=view_model)
+    #return render_template('index.html', todoitems = todoitems)
 
 @app.route('/add', methods=['POST'])
 def add():
