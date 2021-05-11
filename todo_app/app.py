@@ -7,38 +7,11 @@ import requests
 import os
 import pdb
 import json
-
+from todo_app.view_model import ViewModel
+from todo_app.item import Item
 
 app = Flask(__name__)
 app.config.from_object(Config)
-
-class ViewModel():
-    def __init__(self, items):
-        self._items = items
-    @property
-    def items(self):
-        return self._items
-
-    def completed_items(self):
-        completed_items = []
-        for item in self.items:
-            if item.status == "Completed":
-                completed_items.append(item)
-        return completed_items
-    
-    def todo_items(self):
-        todo_items = []
-        for item in self.items:
-            if item.status == "To Do":
-                todo_items.append(item)
-        return todo_items
-
-    def doing_items(self):
-        doing_items = []
-        for item in self.items:
-            if item.status == "Doing":
-                doing_items.append(item)
-        return doing_items
 
 
 @app.route('/')
@@ -51,7 +24,7 @@ def index():
     itemsresponse = requests.get(url, params = query_params).json()
     items = []
     for card in itemsresponse:
-        myitem = Item(card['id'],card['idList'],card['name'])
+        myitem = Item.from_trello_card(card)
         items.append(myitem)
     view_model = ViewModel(items)
     return render_template('index.html',view_model=view_model)
@@ -105,19 +78,12 @@ _DEFAULT_ITEMS = [
         {'id':3,'status': 'Completed', 'title': 'List saved completed items'}
     ]
 
-class Item:
-    def __init__(self, id, title, status) :
-        self.id = 'id'
-        self.title = 'title'
-        self.status = 'status'
+
 
     #def __init__(self, item) :
      #   self.id = item['id']
      #   self.title = item['title']
      #   self.status = item['status']
-
-def get_items():
-        return [Item(item) for item in session.get('items', _DEFAULT_ITEMS) ]
         
         #if self.listid == os.environ.get('TODO_LISTID'):
          #   self.status = "ToDo" 
