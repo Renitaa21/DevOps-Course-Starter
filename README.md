@@ -61,3 +61,15 @@ the instructions here. https://trello.com/app-key
 Add these to the .env file and ensure this file is in the gitignore file so this does not get committed. 
 
 You also need to get the list ids for the todo, doing and done lists by clicking on a card in each of these lists in trello , then click on Share and then Export JSON. Within the JSON response you can find the idList example - "idList":"6047ecb966a18d23e8029cd2". Add these ids into the .env file too. 
+
+## Testing
+
+Install pytest via pip or another package manager. example $ pip install pytest
+to run pytest simply run the command from the root of your project eg $pytest
+Here's how it works:
+1. You write test functions that include assertions.
+2. You run pytest.
+3. Pytest automatically discovers your test functions, runs them,
+and reports any failed assertions.
+
+To run the tests individually click on the conical flask icon named Testing and you should be able to see all your individual tests there after expanding the structure. Click on the play icon in front of individual tests to run them. 
