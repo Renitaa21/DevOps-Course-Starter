@@ -73,3 +73,5 @@ Here's how it works:
 and reports any failed assertions.
 
 To run the tests individually click on the conical flask icon named Testing and you should be able to see all your individual tests there after expanding the structure. Click on the play icon in front of individual tests to run them. 
+
+to run the tests as a whole you can cick on the play icon next to you test file and that should run all the tests in that file. If you see a green tick all have passed else if you see a red cross at least one test case has failed

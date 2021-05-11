@@ -26,7 +26,8 @@ def test_todoitems():
     items = [
         Item(1, 'List saved todo items', 'To Do'),
         Item(2, 'List saved doing items', 'Doing'),
-        Item(3, 'List saved completed items', 'Completed')
+        Item(3, 'List saved completed items', 'Completed'),
+        Item(4, 'List saved doing items 2', 'Doing')
     ]
 
     view_model = ViewModel(items)
