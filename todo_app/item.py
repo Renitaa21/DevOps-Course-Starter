@@ -15,9 +15,9 @@ class Item:
 
         if list_id == os.environ.get('TODO_LISTID'):
             status = "ToDo" 
-        elif listid == os.environ.get('DOING_LISTID'):
+        elif list_id == os.environ.get('DOING_LISTID'):
             status = "Doing" 
-        elif listid == os.environ.get('DONE_LISTID'):
+        elif list_id == os.environ.get('DONE_LISTID'):
             status = "Done" 
         else: 
             status = "NotValid" 
