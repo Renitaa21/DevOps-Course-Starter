@@ -6,6 +6,8 @@ from threading import Thread
 from todo_app.item import Item
 import requests
 from dotenv import load_dotenv,find_dotenv
+import urllib3
+from selenium import webdriver
 
 @pytest.fixture(scope='module')
 def app_with_temp_board():
@@ -22,6 +24,11 @@ def app_with_temp_board():
     # Tear Down
     thread.join(1)
     delete_trello_board(board_id)
+
+@pytest.fixture(scope="module")
+def driver():
+    with webdriver.Firefox() as driver:
+        yield driver
 
 @pytest.fixture
 def test_client():
