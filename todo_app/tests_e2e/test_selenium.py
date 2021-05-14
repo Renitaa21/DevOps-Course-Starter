@@ -50,6 +50,7 @@ def create_trello_board():
         }  
     url = f"https://api.trello.com/1/boards/"
     boardresponse = requests.post(url, params = query_params).json()
+    return boardresponse['id']
 
 def delete_trello_board(board_id):
     query_params = {
