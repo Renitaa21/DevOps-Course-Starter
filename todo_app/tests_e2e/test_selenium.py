@@ -15,7 +15,10 @@ def app_with_temp_board():
     board_id = create_trello_board()
     os.environ['TRELLO_BOARD_ID'] = board_id
     list_id = create_trello_list(board_id)
-    card_id = create_trello_card(list_id)
+    create_trello_card(list_id)
+    todolist_id = getToDoListid(board_id)
+    os.environ['TODO_LISTID'] = todolist_id
+    create_trello_card(todolist_id)
     # construct the new application
     application = app.create_app()
     # start the app in its own thread.
@@ -74,13 +77,26 @@ def create_trello_card(listid):
         }
     url = f"https://api.trello.com/1/cards/"
     cardresponse = requests.post(url, params = query_params_card).json()
-    return cardresponse['id']
-    
+
+def getToDoListid(board_id):
+    query_params = {
+            "key": os.environ.get('API_KEY'),
+            "token": os.environ.get('TOKEN_KEY'),    
+            "idBoard": board_id
+        } 
+    url = f"https://api.trello.com/1/boards/{board_id}/lists/"
+    listsresponse = requests.get(url, params = query_params).json()
+    for list in listsresponse:
+        if list['name'] == 'To Do':
+            return list['id']
+    return None
+
 def delete_trello_board(board_id):
     query_params = {
             "key": os.environ.get('API_KEY'),
            "token": os.environ.get('TOKEN_KEY'),
        }  
+    #incase boardid was not provided
     #url = f"https://api.trello.com/1/members/{username}/boards/"
     #boardidresponse = requests.post(url, params = query_params).json()
     #items = []
