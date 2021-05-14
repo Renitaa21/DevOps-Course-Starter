@@ -464,3 +464,54 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1621011290378	Marionette	INFO	Listening on port 52266
 1621011290754	Marionette	WARN	TLS certificate errors will be ignored for this session
 1621011295084	Marionette	INFO	Stopped listening on port 52266
+1621011443879	geckodriver	INFO	Listening on 127.0.0.1:52401
+1621011446857	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\RENITA~1.FUR\\AppData\\Local\\Temp\\rust_mozprofiletdFPRK"
+1621011448166	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621011451536	Marionette	INFO	Listening on port 52409
+1621011451600	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621011455432	Marionette	INFO	Stopped listening on port 52409
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621011553886	geckodriver	INFO	Listening on 127.0.0.1:52509
+1621011556880	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\RENITA~1.FUR\\AppData\\Local\\Temp\\rust_mozprofilegUlDvP"
+1621011558147	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621011561647	Marionette	INFO	Listening on port 52519
+1621011562132	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621011565838	Marionette	INFO	Stopped listening on port 52519
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621011654627	geckodriver	INFO	Listening on 127.0.0.1:52619
+1621011657640	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\RENITA~1.FUR\\AppData\\Local\\Temp\\rust_mozprofile3zPJrH"
+1621011658855	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621011662073	Marionette	INFO	Listening on port 52628
+1621011662384	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621011844066	Marionette	INFO	Stopped listening on port 52628
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621011910383	geckodriver	INFO	Listening on 127.0.0.1:52811
+1621011913382	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\RENITA~1.FUR\\AppData\\Local\\Temp\\rust_mozprofileXx20yT"
+1621011914704	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621011917998	Marionette	INFO	Listening on port 52820
+1621011918132	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621011921891	Marionette	INFO	Stopped listening on port 52820
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621012388800	geckodriver	INFO	Listening on 127.0.0.1:53336
+1621012391787	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\RENITA~1.FUR\\AppData\\Local\\Temp\\rust_mozprofilerKxvOs"
+1621012393128	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621012396643	Marionette	INFO	Listening on port 53363
+1621012397031	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621012401510	Marionette	INFO	Stopped listening on port 53363
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
