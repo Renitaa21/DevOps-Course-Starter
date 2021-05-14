@@ -14,6 +14,8 @@ def app_with_temp_board():
     # Create the new board & update the board id environment variable
     board_id = create_trello_board()
     os.environ['TRELLO_BOARD_ID'] = board_id
+    list_id = create_trello_list(board_id)
+    card_id = create_trello_card(list_id)
     # construct the new application
     application = app.create_app()
     # start the app in its own thread.
@@ -52,6 +54,28 @@ def create_trello_board():
     boardresponse = requests.post(url, params = query_params).json()
     return boardresponse['id']
 
+def create_trello_list(board_id):
+    query_params = {
+            "key": os.environ.get('API_KEY'),
+            "token": os.environ.get('TOKEN_KEY'),
+            "name": os.environ.get('TEST_LIST_NAME'),
+            "idBoard": board_id
+        } 
+    listurl = f"https://api.trello.com/1/lists/"
+    listresponse = requests.post(listurl, params = query_params).json()
+    return listresponse['id']
+
+def create_trello_card(listid):
+    query_params_card = {
+            "key": os.environ.get('API_KEY'),
+            "token": os.environ.get('TOKEN_KEY'),
+            "idList": listid,
+            "name": os.environ.get('TEST_CARD_NAME')  
+        }
+    url = f"https://api.trello.com/1/cards/"
+    cardresponse = requests.post(url, params = query_params_card).json()
+    return cardresponse['id']
+    
 def delete_trello_board(board_id):
     query_params = {
             "key": os.environ.get('API_KEY'),
