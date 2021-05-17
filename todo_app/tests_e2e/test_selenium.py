@@ -8,17 +8,19 @@ import requests
 from dotenv import load_dotenv,find_dotenv
 import urllib3
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
 
 @pytest.fixture(scope='module')
 def app_with_temp_board():
     # Create the new board & update the board id environment variable
     board_id = create_trello_board()
     os.environ['TRELLO_BOARD_ID'] = board_id
-    list_id = create_trello_list(board_id)
-    create_trello_card(list_id)
+    # list_id = create_trello_list(board_id)
+    # create_trello_card(list_id)
     todolist_id = getToDoListid(board_id)
     os.environ['TODO_LISTID'] = todolist_id
-    create_trello_card(todolist_id)
+    # create_trello_card(todolist_id)
     # construct the new application
     application = app.create_app()
     # start the app in its own thread.
@@ -45,6 +47,16 @@ def test_client():
 
 def test_task_journey(driver, app_with_temp_board):
     driver.get('http://localhost:5000/')
+    title_input_elem = driver.find_element_by_name("title")
+    title_input_elem.send_keys("Test Todo")
+    title_input_elem.send_keys(Keys.RETURN)
+
+    time.sleep(5)
+
+    elem = driver.find_element_by_name("complete-button")
+    elem.click()
+
+    time.sleep(5)
     assert driver.title == 'To-Do App'
 
 def create_trello_board():

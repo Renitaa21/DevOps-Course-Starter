@@ -14,7 +14,7 @@ class Item:
         status = ""
 
         if list_id == os.environ.get('TODO_LISTID'):
-            status = "ToDo" 
+            status = "To Do" 
         elif list_id == os.environ.get('DOING_LISTID'):
             status = "Doing" 
         elif list_id == os.environ.get('DONE_LISTID'):

@@ -9,6 +9,7 @@ import pdb
 import json
 from todo_app.view_model import ViewModel
 from todo_app.item import Item
+import logging
 
 def create_app():
     app = Flask(__name__)
@@ -21,7 +22,9 @@ def create_app():
             "token": os.environ.get('TOKEN_KEY')
         }  
         url = f"https://api.trello.com/1/lists/{os.environ.get('TODO_LISTID')}/cards"
+        app.logger.info(f"{url}")
         itemsresponse = requests.get(url, params = query_params).json()
+        app.logger.info(f"{itemsresponse}")
         items = []
         for card in itemsresponse:
             myitem = Item.from_trello_card(card)

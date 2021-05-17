@@ -13,7 +13,7 @@
       <ul class="list-group mb-4">
         <!-- List the todo items here -->
         {% for item in view_model.todo_items() %}
-        #<li>{{ item.title}} - {{item.id}} - {{item.listid}} - {{item.status}}  <a href= "{{url_for('completeitem',id=item.id)}}">Complete</a> </li>
+        #<li>{{ item.title}} - {{item.id}} - {{item.listid}} - {{item.status}}  <a name="complete-button" href= "{{url_for('completeitem',id=item.id)}}">Complete</a> </li>
         {% endfor %}
       </ul>
     </div>
