@@ -45,7 +45,7 @@ def test_client():
     with test_app.test_client() as client:
         yield client
 
-def test_task_journey(driver, app_with_temp_board):
+def test_task_journey_completeitem(driver, app_with_temp_board):
     driver.get('http://localhost:5000/')
     title_input_elem = driver.find_element_by_name("title")
     title_input_elem.send_keys("Test Todo")
@@ -57,7 +57,17 @@ def test_task_journey(driver, app_with_temp_board):
     elem.click()
 
     time.sleep(5)
-    assert driver.title == 'To-Do App'
+    assert (driver.title == 'To-Do App' and "Test Todo" not in driver.page_source)
+
+def test_task_journey_createitem(driver, app_with_temp_board):
+    driver.get('http://localhost:5000/')
+    title_input_elem = driver.find_element_by_name("title")
+    title_input_elem.send_keys("Test Todo")
+    title_input_elem.send_keys(Keys.RETURN)
+
+    time.sleep(5)
+
+    assert (driver.title == 'To-Do App'and "Test Todo" in driver.page_source)
 
 def create_trello_board():
     query_params = {
