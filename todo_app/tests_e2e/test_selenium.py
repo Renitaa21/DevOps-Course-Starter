@@ -20,6 +20,10 @@ def app_with_temp_board():
     # create_trello_card(list_id)
     todolist_id = getToDoListid(board_id)
     os.environ['TODO_LISTID'] = todolist_id
+    donelist_id = getDoneListid(board_id)
+    os.environ['DONE_LISTID'] = donelist_id
+    doinglist_id = getDoingListid(board_id)
+    os.environ['DOING_LISTID'] = doinglist_id
     # create_trello_card(todolist_id)
     # construct the new application
     application = app.create_app()
@@ -39,7 +43,7 @@ def driver():
 
 @pytest.fixture
 def test_client():
-    file_path = find_dotenv('.env.test')
+    file_path = find_dotenv('.env')
     load_dotenv(file_path, override=True)
     test_app = app.create_app()
     with test_app.test_client() as client:
@@ -51,7 +55,7 @@ def test_task_journey_completeitem(driver, app_with_temp_board):
     title_input_elem.send_keys("Test Todo")
     title_input_elem.send_keys(Keys.RETURN)
 
-    time.sleep(5)
+    driver.implicitly_wait(5)
 
     elem = driver.find_element_by_name("complete-button")
     elem.click()
@@ -112,6 +116,33 @@ def getToDoListid(board_id):
         if list['name'] == 'To Do':
             return list['id']
     return None
+
+def getDoneListid(board_id):
+    query_params = {
+            "key": os.environ.get('API_KEY'),
+            "token": os.environ.get('TOKEN_KEY'),    
+            "idBoard": board_id
+        } 
+    url = f"https://api.trello.com/1/boards/{board_id}/lists/"
+    listsresponse = requests.get(url, params = query_params).json()
+    for list in listsresponse:
+        if list['name'] == 'Done':
+            return list['id']
+    return None
+
+def getDoingListid(board_id):
+    query_params = {
+            "key": os.environ.get('API_KEY'),
+            "token": os.environ.get('TOKEN_KEY'),    
+            "idBoard": board_id
+        } 
+    url = f"https://api.trello.com/1/boards/{board_id}/lists/"
+    listsresponse = requests.get(url, params = query_params).json()
+    for list in listsresponse:
+        if list['name'] == 'Doing':
+            return list['id']
+    return None
+
 
 def delete_trello_board(board_id):
     query_params = {

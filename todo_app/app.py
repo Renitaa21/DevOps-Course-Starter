@@ -1,4 +1,4 @@
-from flask import Flask, app, render_template, url_for
+from flask import Flask, render_template, url_for
 from werkzeug.utils import redirect
 from todo_app.data.session_items import *
 from todo_app.flask_config import Config
@@ -71,14 +71,5 @@ def create_app():
         
         return redirect(url_for("index"))
 
-    if __name__ == '__main__':
-        app.run()
-
-    _DEFAULT_ITEMS = [
-            {'id':1,'status': 'Not Started', 'title': 'List saved todo items'},
-            {'id':2,'status': 'Not Started', 'title': 'List saved doing items'},
-            {'id':3,'status': 'Completed', 'title': 'List saved completed items'}
-        ]
-    return app
-
+   
 

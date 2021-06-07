@@ -75,3 +75,5 @@ and reports any failed assertions.
 To run the tests individually click on the conical flask icon named Testing and you should be able to see all your individual tests there after expanding the structure. Click on the play icon in front of individual tests to run them. 
 
 to run the tests as a whole you can cick on the play icon next to you test file and that should run all the tests in that file. If you see a green tick all have passed else if you see a red cross at least one test case has failed
+
+To run these tests directly from a command line use poetry run pytest. There are dependancies such as Firefox and Geckodriver that are needed to run the end to end tests successfully. To run the selenium tests you can use poetry run pytest test_selenium. For Geckodriver - you will need to download the Gecko Driver executable and place it in the root of your project - the selenium driver just uses this under the hood. Install firefox as this is a dependancy.
