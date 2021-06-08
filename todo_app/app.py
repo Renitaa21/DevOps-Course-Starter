@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for
 from werkzeug.utils import redirect
 from todo_app.data.session_items import *
-from todo_app.flask_config import Config
+#from todo_app.flask_config import Config
 from flask import request 
 import requests
 import os
@@ -70,6 +70,7 @@ def create_app():
         requests.put(url, params=query_params)
         
         return redirect(url_for("index"))
-
+    
+    return app
    
 

@@ -14,6 +14,8 @@ import time
 @pytest.fixture(scope='module')
 def app_with_temp_board():
     # Create the new board & update the board id environment variable
+    file_path = find_dotenv('.env')
+    load_dotenv(file_path, override=True)
     board_id = create_trello_board()
     os.environ['TRELLO_BOARD_ID'] = board_id
     # list_id = create_trello_list(board_id)
@@ -40,14 +42,6 @@ def app_with_temp_board():
 def driver():
     with webdriver.Firefox() as driver:
         yield driver
-
-@pytest.fixture
-def test_client():
-    file_path = find_dotenv('.env')
-    load_dotenv(file_path, override=True)
-    test_app = app.create_app()
-    with test_app.test_client() as client:
-        yield client
 
 def test_task_journey_completeitem(driver, app_with_temp_board):
     driver.get('http://localhost:5000/')

@@ -669,3 +669,55 @@ JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: 
 
 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1623156340861	geckodriver	INFO	Listening on 127.0.0.1:51641
+1623156343842	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\RENITA~1.FUR\\AppData\\Local\\Temp\\rust_mozprofileV4FCk3"
+1623156346032	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1623156351190	Marionette	INFO	Listening on port 51653
+1623156351251	Marionette	WARN	TLS certificate errors will be ignored for this session
+1623156366071	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+1623156366782	Marionette	INFO	Stopped listening on port 51653
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1623158149890	geckodriver	INFO	Listening on 127.0.0.1:62729
+1623158152864	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\RENITA~1.FUR\\AppData\\Local\\Temp\\rust_mozprofileRusOPF"
+1623158154574	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1623158159794	Marionette	INFO	Listening on port 62737
+1623158160263	Marionette	WARN	TLS certificate errors will be ignored for this session
+1623158161188	Marionette	INFO	Stopped listening on port 62737
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1623158273738	geckodriver	INFO	Listening on 127.0.0.1:54347
+1623158276710	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\RENITA~1.FUR\\AppData\\Local\\Temp\\rust_mozprofilerY6Z1z"
+1623158278424	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1623158284832	Marionette	INFO	Listening on port 54355
+1623158285130	Marionette	WARN	TLS certificate errors will be ignored for this session
+1623158286212	Marionette	INFO	Stopped listening on port 54355
+1623158593827	geckodriver	INFO	Listening on 127.0.0.1:57520
+1623158596786	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\RENITA~1.FUR\\AppData\\Local\\Temp\\rust_mozprofileetyUS1"
+1623158598940	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1623158604743	Marionette	INFO	Listening on port 57529
+1623158605336	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+1623158608787	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1623158621662	Marionette	INFO	Stopped listening on port 57529
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1623158661794	geckodriver	INFO	Listening on 127.0.0.1:64387
+1623158664759	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\RENITA~1.FUR\\AppData\\Local\\Temp\\rust_mozprofileOzPm9g"
+1623158666674	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1623158671624	Marionette	INFO	Listening on port 64395
+1623158672326	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+1623158676583	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1623158689364	Marionette	INFO	Stopped listening on port 64395
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
