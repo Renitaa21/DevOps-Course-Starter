@@ -77,3 +77,7 @@ To run the tests individually click on the conical flask icon named Testing and 
 to run the tests as a whole you can cick on the play icon next to you test file and that should run all the tests in that file. If you see a green tick all have passed else if you see a red cross at least one test case has failed
 
 To run these tests directly from a command line use poetry run pytest. There are dependancies such as Firefox and Geckodriver that are needed to run the end to end tests successfully. To run the selenium tests you can use poetry run pytest test_selenium. For Geckodriver - you will need to download the Gecko Driver executable and place it in the root of your project - the selenium driver just uses this under the hood. Install firefox as this is a dependancy.
+
+## Virtual Box and Vagrant
+
+All the necessary code to automatically launch the app, networking, provisioning etc is done in the vagrant file. Simply run the command vagrnat up from a command line tool and 
