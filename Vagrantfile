@@ -76,14 +76,12 @@ Vagrant.configure("2") do |config|
     echo 'eval "$(pyenv init --path)" ' >> ~/.profile
     source ${HOME}/.profile
 
-  SHELL
-
-  config.vm.provision "shell", privileged: false, inline: <<-SHELL
-  cd ~/.pyenv
-  pyenv install 3.9.1
-  pyenv global 3.9.1
-  curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-  source ${HOME}/.profile
+    cd ~/.pyenv
+    pyenv install 3.9.1
+    pyenv global 3.9.1
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+    source ${HOME}/.profile
+  
   SHELL
 
   config.trigger.after :up do |trigger|
@@ -93,10 +91,9 @@ Vagrant.configure("2") do |config|
       cd /vagrant
       echo 'cd /vagrant' >> ~/.profile
       poetry install
-      echo 'Poetry install' >> ~/.profile
       nohup poetry run flask run --host=0.0.0.0 > logs.txt 2>&1 & 
-      echo 'poetry run flask run' >> ~/.profile
-    SHELL
+    
+      SHELL
 
   end
 
