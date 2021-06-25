@@ -1,0 +1,15 @@
+#.env secrets 
+.env
+
+#env template
+.env.template
+
+#git 
+.git
+.gitignore
+
+#readme
+README.md
+
+#vagrant
+.vagrant

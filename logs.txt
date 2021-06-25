@@ -1,0 +1,10 @@
+ * Serving Flask app "todo_app/app" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 118-426-545
+[2021-06-15 16:30:24,507] INFO in app: https://api.trello.com/1/lists/6047ecb966a18d23e8029cd2/cards
+[2021-06-15 16:30:24,903] INFO in app: [{'id': '60a3eaa4d8443208ddc6f33c', 'checkItemStates': None, 'closed': False, 'dateLastActivity': '2021-05-18T16:26:12.238Z', 'desc': '', 'descData': None, 'dueReminder': None, 'idBoard': '6047ecb966a18d23e8029cd1', 'idList': '6047ecb966a18d23e8029cd2', 'idMembersVoted': [], 'idShort': 49, 'idAttachmentCover': None, 'idLabels': [], 'manualCoverAttachment': False, 'name': 'Test Todo', 'pos': 16384, 'shortLink': '01o1EVEC', 'isTemplate': False, 'cardRole': None, 'badges': {'attachmentsByType': {'trello': {'board': 0, 'card': 0}}, 'location': False, 'votes': 0, 'viewingMemberVoted': False, 'subscribed': False, 'fogbugz': '', 'checkItems': 0, 'checkItemsChecked': 0, 'checkItemsEarliestDue': None, 'comments': 0, 'attachments': 0, 'description': False, 'due': None, 'dueComplete': False, 'start': None}, 'dueComplete': False, 'due': None, 'idChecklists': [], 'idMembers': [], 'labels': [], 'shortUrl': 'https://trello.com/c/01o1EVEC', 'start': None, 'subscribed': False, 'url': 'https://trello.com/c/01o1EVEC/49-test-todo', 'cover': {'idAttachment': None, 'color': None, 'idUploadedBackground': None, 'size': 'normal', 'brightness': 'dark', 'idPlugin': None}}]
+10.0.2.2 - - [15/Jun/2021 16:30:24] "[37mGET / HTTP/1.1[0m" 200 -
