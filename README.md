@@ -87,3 +87,12 @@ All the necessary code to automatically launch the app, networking, provisioning
 URL for the app - http://localhost:5000/ 
 
 Context - to save set up of an environment we can use vagrant and virtual box, we nopw have a VM configuration that can be shared with other developers such that it takes care of all installations and dependancies , not production ready but saves environment setup for lower regions
+
+## Building docker images and running containers
+docker build --tag todo_app
+docker compose up
+
+docker build --target development --tag todo-app:dev .
+docker run --publish 5000:5000 --env-file .env todo-app:dev
+docker build --target production --tag todo-app:prod .
+docker run --publish 5000:5000 --env-file .env todo-app:prod

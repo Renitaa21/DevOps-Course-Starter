@@ -13,3 +13,12 @@ README.md
 
 #vagrant
 .vagrant
+
+#Dockerfile
+Dockerfile
+
+#pycache
+**/__pycache__
+
+#vscode
+.vscode
