@@ -122,8 +122,8 @@ env/
 ### Binaries ###
 geckodriver.exe
 
-###vagrant###
+###Vagrant###
 .vagrant
 
-###logs ###
+###logs###
 logs.txt
