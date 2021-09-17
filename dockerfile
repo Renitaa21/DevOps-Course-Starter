@@ -2,7 +2,7 @@ FROM python:3.9.1-slim-buster as base
 
 WORKDIR /todo-app
 
-COPY pyproject.toml poetry.lock .
+COPY pyproject.toml poetry.lock ./
 
 #RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
